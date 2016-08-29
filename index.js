@@ -2,10 +2,13 @@ var caption = require('caption');
 var AWS = require('aws-sdk');
 var fs = require('fs');
 
-
+/*
+    The following variables need to be updated
+ */
 AWS.config.region = 'us-east-1';
 var bucketName = "slackdoge";
-var bucketPath = "https://s3-us-west-2.amazonaws.com/"+bucketName
+var bucketPath = "https://s3-us-west-2.amazonaws.com/slackdoge/";
+
 
 
 /*
@@ -37,6 +40,8 @@ var generateMeme = function (meme, topCaption, bottomCaption, cb) {
     
         }).send(function (err, data) {
             var url = bucketPath + fileName;
+            console.log("ERRR ",err)
+            console.log(url)
             cb(err, url);
 
         });
